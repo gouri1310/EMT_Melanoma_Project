@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
+fname=("C:/Users/rajaram/Desktop/CSB Proj/EMT Scores/GSE162973_brand_new.xlsx")
+t=pd.read_excel(fname,engine="openpyxl")
+gs=t["76GS_Score"].tolist()
+ks=t["KS_Score"].tolist()
+x=np.array(gs)
+y=np.array(ks)
+m,b=np.polyfit(x,y,1)
+plt.plot(x,m*x+b)
+a=stats.pearsonr(x,y)
+print("Correlation Coefficient=",a[0])
+print("P-value is",a[1])
+r=round(a[0],5)
+p_value=round(a[1],5)
+con="Correlation coefficient ="+str(r)
+plt.scatter(gs,ks,c="black",alpha=1.0)
+plt.xlabel("EMT Score by 76_GS Method")
+plt.ylabel("EMT Score by KS Method")
+plt.title(con)
+plt.savefig("C:/Users/rajaram/Desktop/CSB Proj/EMT Scores/Correlation_76GS_KS_GSE162973.png")
+plt.show()
+quit()
