@@ -1,3 +1,4 @@
+#converting illumina probe IDs to gene symbols
 setwd("C:/GSE ID Scores")
 gse141484_df<-read.csv("C:/GSE ID Scores/GSE141484_non-normalized.csv")
 class(gse141484_df)
